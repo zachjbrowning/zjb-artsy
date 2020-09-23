@@ -38,20 +38,8 @@ $family-secondary: $font-primary-sans-serif;
 //@import "../node_modules/bulma/sass/layout/_all";
 @import "../node_modules/bulma/sass/elements/button.sass";
 
-// Other stuff
 
-main {
-  margin-left:5rem;
-  padding:20px;
+body {
+  margin:0;
 }
 
-@media only screen and (min-width: 600px) {
-  nav {
-    width: 5rem;
-    height: 100vh;
-  }
-
-  main {
-    margin-left: 5rem;
-  }
-}

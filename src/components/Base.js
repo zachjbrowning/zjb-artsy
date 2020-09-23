@@ -1,45 +1,91 @@
 import React from 'react'
-import ZJBlogo from './ZJBlogo'
 import styles from "./Base.module.scss";
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { spinner_toggle } from "../../lib/redux/actions/spinnerAction";
-import ExampleAPI from "../../lib/api/example";
 
 export default function Base() {
-    const [msg, setMsg] = useState("");
-    const spin = useSelector(state => state.spinner)
-    const dispatch = useDispatch();
+    const [text, setText] = useState("");
+    const [deleting, setDeleting] = useState(false);
+    const [iter, setIter] = useState(0);
+    const sentences = ["Hello there, I'm Zach", "I hope you like my website!!"]
 
-    useEffect(() => {
-        ExampleAPI.get("hello_world")
-        .then(res => setMsg(res.data.msg))
-        .catch(err => setMsg("Couldn't connect to backend :("));
+    /*function typewrite(deleting, iter) {
+        let word = sentences[iter % sentences.length];
+        let current = text;
+        // either deleting or adding
+        if (deleting) {
+            setText(text.substring(0, text.length - 1));
+        } else {
+            setText(word.substring(0, current.length + 1));
+        }
         
-    }, []);
+        setText("WTF GOIN ON")
+        if (!deleting && text.length === word.length) {
+            // START DELETING
+            setTimeout(() => {
+                typewrite(true, iter);
+            }, 2000);
+        } else if (deleting && text === "") {
+            // START TPYING
+            setTimeout(() => {
+                typewrite(false, iter + 1)
+            }, 500);
+        } else {
+            // DO NEXT TYPE
+            var delta = 200 - Math.random() * 100;
+            if (deleting) delta /= 2;
+            setTimeout(() => {
+                typewrite(deleting, iter)
+            }, delta);
+        }
+            
 
-    return (
-        <div className="container">
-            <div className="columns is-multiline is-centered">
-                <div className={`column is-10 ${styles.box}`}>
-                    <h1 className={`title is-1 ${styles.speak}`}>Happy Building!!</h1>
-                </div>
-                <div className={`column ${styles.box} is-6`}>
-                    <button onClick={() => dispatch(spinner_toggle())} className="button is-primary">
-                        { spin ? 
-                        "Woahhh slow down..."
-                        :
-                        "Go for a spin"
-                        }
-                    </button>
-                </div>
-                <div className={`column is-10 ${styles.box}`}>
-                    <ZJBlogo/>
-                </div>
-                <div className={`column is-10 ${styles.box}`}>
-                    <p>{msg}</p>
-                </div>
+    }*/
+
+    function typewrite(doDelete, isIter) {
+        let word = sentences[isIter % sentences.length];
+        
+        if (doDelete) {
+            setText(text.substring(0, text.length - 1));
+        } else {
+            setText(word.substring(0, text.length + 1));
+        }
+    }
+    
+    useEffect(() => {
+        let word = sentences[iter % sentences.length];
+
+        if (!deleting && text.length === word.length) {
+            // START DELETING
+            setDeleting(true);
+            setTimeout(() => {
+                typewrite(true, iter);
+            }, 2000);
+        } else if (deleting && text === "") {
+            setDeleting(false);
+            setIter(iter + 1);
+            setTimeout(() => {
+                typewrite(false, iter + 1);
+            }, 500);
+        } else {
+            // DO NEXT TYPE
+            var delta = 200 - Math.random() * 100;
+            if (deleting) delta /= 2;
+            setTimeout(() => {
+                typewrite(deleting, iter);
+            }, delta);
+        }
+    }, [text])
+
+    return <>
+        <div className={styles.cover}>
+            <div id="brickround" className={styles.bricks}></div>
+            <div className={styles.covergain}>
+                <p>{text}|</p>
             </div>
+            
         </div>
-    )
+
+        <div className={styles.cover}></div>
+    </>
 }
+
