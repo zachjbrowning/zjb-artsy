@@ -6,15 +6,12 @@
 .cover {
     position:relative;
 }
-
-
-
 .bricks {
     position:absolute;
     top:0;
     left:0;
     right:0;
-    background: url('../../public/bricks.svg') no-repeat fixed;
+    background: url('../../../public/bricks.svg') no-repeat fixed;
     background-size:cover;
 }
 .covergain {
@@ -22,9 +19,18 @@
     bottom:0;
     left:0;
     right:0;
-    background: url('../../public/artbro.svg') no-repeat center;
+    background: url('../../../public/artbro.svg') no-repeat center;
     background-size:cover;
     display:flex;
     justify-content: center;
+    align-items: flex-start;
 
+}
+.title {
+    font-family: 'Baloo Tammudu 2', cursive;
+    font-size: 3rem;
+    span {
+        color:#5C7464;
+    }
+    margin-top:2rem;
 }
