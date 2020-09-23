@@ -1,11 +1,11 @@
 // ==== Fonts ==== //
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500;600&family=Roboto&display=swap');
-
-$font-primary-serif: "Baloo Tammudu 2";
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+$font-primary-serif: "Ubuntu";
 $font-primary-sans-serif: "Roboto";
 
 // ==== Colors ==== //
-$primary: #763CA0;
+$primary: #5C7464;
 $secondary: #E65c20;
 $tertiary: #0e0f0f;
 $background: #ffffff;
@@ -30,13 +30,13 @@ $family-secondary: $font-primary-sans-serif;
 
 // Import bulma after you define variables
 @import "../node_modules/bulma/sass/utilities/_all";
-//@import "../node_modules/bulma/sass/base/_all";
-//@import "../node_modules/bulma/sass/elements/_all";
-//@import "../node_modules/bulma/sass/form/_all";
-//@import "../node_modules/bulma/sass/components/_all";
+@import "../node_modules/bulma/sass/base/_all";
+@import "../node_modules/bulma/sass/elements/_all";
+@import "../node_modules/bulma/sass/form/_all";
+@import "../node_modules/bulma/sass/components/_all";
 @import "../node_modules/bulma/sass/grid/columns.sass";
-//@import "../node_modules/bulma/sass/layout/_all";
-@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/layout/_all";
+//@import "../node_modules/bulma/sass/elements/button.sass";
 
 
 body {

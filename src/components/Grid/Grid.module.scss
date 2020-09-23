@@ -1,0 +1,19 @@
+$break-small: 320px;
+$break-medium: 769px;
+$break-large: 1200px;
+
+.tile {
+    @media screen and (max-width: $break-small) {
+        width:100vw;
+        height:100vw;
+    }
+    @media screen and (min-width: $break-small) and (max-width: $break-medium) {
+        width:calc(100vw / 2);
+        height:calc(100vw / 2);
+    }
+    @media screen and (min-width: $break-large) {
+        width:calc(100vw / 3);
+        height:calc(100vw / 3);
+    }
+}
+

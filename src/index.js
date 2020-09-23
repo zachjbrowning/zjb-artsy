@@ -7,5 +7,7 @@ import { Provider } from "react-redux";
 import store from "../lib/redux/store";
 
 ReactDom.render(<Provider store={store}>
-        <Wireframe/>
+        <BrowserRouter>
+            <Wireframe/>
+        </BrowserRouter>
     </Provider>, document.getElementById('root'))
