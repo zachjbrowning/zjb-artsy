@@ -1,15 +1,36 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import styles from './Grid.module.scss';
 import Tile from './Tile';
 
 export default function Grid() {
-    return <div className={`columns is-centered is-multiline ${styles.grid}`}>
-        <Tile colour={"#F898A4"} text="openbook" />
-        <Tile colour={"#FCDA9C"} text="this website" />
-        <Tile colour={"#F7FAA1"} />
-        <Tile colour={"#B4F6A4"} />
-        <Tile colour={"#9BE0F1"} />
+    const history = useHistory();
+    
+    let projects = useSelector(state => state.projects);
+    let recipes = useSelector(state => state.recipes);
+
+
+    return <div className={`columns is-multiline ${styles.grid}`}>
+        {
+            history.location.pathname === "/projects" ?
+            
+            projects.map((val, idx) => (
+                <Tile key={idx} tile={val}/>
+            ))
+
+            : ""
+        }
+        {
+            history.location.pathname === "/recipes" ?
+            
+            recipes.map((val, idx) => (
+                <Tile key={idx} tile={val}/>
+            ))
+
+            : ""
+        }
         
     </div>
 }
