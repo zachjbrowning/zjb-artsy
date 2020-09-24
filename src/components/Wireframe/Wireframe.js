@@ -11,8 +11,8 @@ export default function Wireframe() {
         <Landing />
         <Nav />
         <Switch>
-            <Route exact path="/projects" component={Grid} />
-            <Route exact path="/recipes" component={Grid} />
+            <Route exact path="/projects"><Grid list={'projects'} /></Route>
+            <Route exact path="/recipes"><Grid list={'recipes'} /></Route>
         </Switch>
     </>
 }

@@ -1,21 +1,43 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import styles from './Nav.module.scss';
 
 export default function Nav() {
-    return <div className={styles.constrict}>
+    const history = useHistory();
+    
+    function setActive(e) {
+        console.log(e.target, history.location.pathname);
+        e.target.classList.add(styles.active);
+        switch (history.location.pathname) {
+            case '/':
+                document.getElementById("nav-about").classList.remove(styles.active);
+                break;
+            case '/projects':
+                document.getElementById("nav-projects").classList.remove(styles.active);
+                break;
+            case '/recipes':
+                document.getElementById("nav-recipes").classList.remove(styles.active);
+                break;
+            case '/contact':
+                document.getElementById("nav-contact").classList.remove(styles.active);
+                break;
+            default:
+        }
+    }
+    
+    return <div id="nav" className={styles.constrict}>
         <div className={styles.nav}>
-            <Link to={"/"} className={styles.navItem}>
+            <Link id="nav-about" onClick={setActive} to={"/"} className={`${styles.navItem} ${history.location.pathname === '/' ? styles.active : ""}`}>
                 about
             </Link>
-            <Link to={"/projects"} className={styles.navItem}>
+            <Link id="nav-projects" onClick={setActive} to={"/projects"} className={`${styles.navItem} ${history.location.pathname === '/projects' ? styles.active : ""}`}>
                 projects
             </Link>
-            <Link to={"/recipes"} className={styles.navItem}>
+            <Link id="nav-recipes" onClick={setActive} to={"/recipes"} className={`${styles.navItem} ${history.location.pathname === '/recipes' ? styles.active : ""}`}>
                 recipes
             </Link>
-            <Link to={"/contact"} className={styles.navItem}>
+            <Link id="nav-contact" onClick={setActive} to={"/contact"} className={`${styles.navItem} ${history.location.pathname === '/contact' ? styles.active : ""}`}>
                 contact
             </Link>
         </div>

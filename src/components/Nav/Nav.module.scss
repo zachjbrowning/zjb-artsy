@@ -3,6 +3,12 @@
     padding:0 1rem;
 }
 
+.active {
+    color:var(--dark);
+    &:hover {
+        opacity:0.5;
+    }
+}
 
 .constrict {
 
