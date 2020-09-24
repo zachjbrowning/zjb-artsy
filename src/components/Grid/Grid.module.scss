@@ -1,13 +1,18 @@
-$break-small: 320px;
 $break-medium: 769px;
 $break-large: 1200px;
 
 .tile {
-    @media screen and (max-width: $break-small) {
+    flex:none;
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    @media screen and (max-width: $break-medium) {
         width:100vw;
         height:100vw;
     }
-    @media screen and (min-width: $break-small) and (max-width: $break-medium) {
+    @media screen and (min-width: $break-medium) and (max-width: $break-large) {
         width:calc(100vw / 2);
         height:calc(100vw / 2);
     }
@@ -15,5 +20,26 @@ $break-large: 1200px;
         width:calc(100vw / 3);
         height:calc(100vw / 3);
     }
+
+    .text {
+        display:none;
+    }
+    &:hover .text{
+        display:flex;
+        font-size:1.5rem;
+    }
+    .img {
+        position:absolute;
+        width:100%;
+        height:100%;
+        top : 0;
+        left: 0;
+        right: 0;
+        background-image:url('../../../public/bricks.svg') cover;
+        z-index:1000;
+    }
 }
 
+.grid {
+    margin-top:0 !important;
+}
