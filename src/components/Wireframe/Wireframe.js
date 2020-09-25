@@ -13,6 +13,7 @@ export default function Wireframe() {
         <Switch>
             <Route exact path="/projects"><Grid list={'projects'} /></Route>
             <Route exact path="/recipes"><Grid list={'recipes'} /></Route>
+            <Route exact path="/contact"><Grid list={'contact'} /></Route>
         </Switch>
     </>
 }

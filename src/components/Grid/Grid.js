@@ -6,11 +6,13 @@ import styles from './Grid.module.scss';
 import Tile from './Tile';
 
 export default function Grid(props) {
-    var list;
+    var list = [];
     if (props.list === "projects") {
         list = useSelector(state => state.projects);
     } else if (props.list === 'recipes') {
         list = useSelector(state => state.recipes);
+    } else if (props.list === 'contact') {
+        list = useSelector(state => state.contact);
     }
 
     useEffect(() => {

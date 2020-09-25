@@ -26,6 +26,30 @@
     align-items: flex-start;
 
 }
+.arrowBox {
+    position:absolute;
+    width:100%;
+    bottom:2rem;
+}
+.arrow {
+    position:absolute;
+    bottom:2rem;
+    right:calc(max(6vw, 2rem));
+    svg {
+        width:3rem;
+        margin-right:2rem;
+        stroke:#000;
+        fill:#000;
+        stroke-width:0;
+        stroke-miterlimit: 10;
+        transition:stroke-width ease 300ms, transform ease-in-out 500ms; 
+        &:hover {
+            stroke-width:200;
+            cursor: pointer;
+            transform:rotate(180deg);
+        }
+    }
+}
 .title {
     font-size: 3.5rem;
     span {
@@ -33,3 +57,4 @@
     }
     margin-top:2rem;
 }
+
