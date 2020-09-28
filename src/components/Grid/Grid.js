@@ -7,8 +7,10 @@ import Tile from './Tile';
 
 export default function Grid(props) {
     var list = [];
+    var projects = false;
     if (props.list === "projects") {
         list = useSelector(state => state.projects);
+        projects = true;
     } else if (props.list === 'recipes') {
         list = useSelector(state => state.recipes);
     } else if (props.list === 'contact') {
@@ -22,7 +24,7 @@ export default function Grid(props) {
     return <div id="grid" className={`columns is-multiline ${styles.grid}`}>
         {
             list.map((val, idx) => (
-                <Tile key={idx} tile={val}/>
+                <Tile key={idx} tile={val} projects={projects} />
             ))
         }
         

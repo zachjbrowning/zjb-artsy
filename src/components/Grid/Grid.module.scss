@@ -22,8 +22,12 @@ $break-large: 1200px;
     }
 
     .text {
+        width:100%;
+        height:100%;
+        justify-content: center;
+        align-items: center;
         display:flex;
-        z-index:50;
+        z-index:30;
         color:white;
         font-size:1.5rem;
     }
@@ -51,4 +55,5 @@ $break-large: 1200px;
 
 .grid {
     margin-top:0 !important;
+    margin-bottom:0 !important;
 }

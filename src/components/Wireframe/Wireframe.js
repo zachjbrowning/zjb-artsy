@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import Landing from '../Landing/Landing';
 import Nav from '../Nav/Nav';
 import Grid from '../Grid/Grid';
+import Modal from '../Modal/Modal';
 
 export default function Wireframe() {
     return <>
@@ -15,5 +16,6 @@ export default function Wireframe() {
             <Route exact path="/recipes"><Grid list={'recipes'} /></Route>
             <Route exact path="/contact"><Grid list={'contact'} /></Route>
         </Switch>
+        <Modal />
     </>
 }

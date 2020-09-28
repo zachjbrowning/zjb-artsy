@@ -53,7 +53,7 @@ export default function Landing() {
         </div>
         <div className={styles.arrow}>
             <svg onClick={scroll} x="0px" y="0px" viewBox="0 0 8192 8192">
-                <polygon class="st0" points="4096,5553.7 458.5,2643.7 707.2,2336.7 4096,5047.6 7484.8,2337 7733.5,2643.7 "/>
+                <polygon points="4096,5553.7 458.5,2643.7 707.2,2336.7 4096,5047.6 7484.8,2337 7733.5,2643.7 "/>
             </svg>
         </div>
     </div>

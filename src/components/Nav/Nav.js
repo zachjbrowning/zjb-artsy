@@ -7,7 +7,6 @@ export default function Nav() {
     const history = useHistory();
     
     function setActive(e) {
-        console.log(e.target, history.location.pathname);
         e.target.classList.add(styles.active);
         switch (history.location.pathname) {
             case '/':
