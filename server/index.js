@@ -1,3 +1,5 @@
+const db = require('./dbManage');
+
 const express = require('express');
 const path = require('path'); 
 const bodyParser = require('body-parser');
@@ -13,14 +15,14 @@ app.use(express.static(DIST_DIR));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
-app.get('/bump/:id', (req, res) => {
-    res.send({msg : "Connected to backend!!"});
-    console.log("ID:", req.params.id);
+app.get('/recipes', (req, res) => {
+    var recipes = db.getRecipes();
+    res.send({ recipes : recipes});
 })
 
-app.post('/push', (req, res) => {
-    res.send({msg : "Connected to backend!!"});
-    console.log( "Data:", req.body)
+app.get('/projects', (req, res) => {
+    var recipes = db.getProjects();
+    res.send({ recipes : recipes});
 })
 
 //Routing, default sends all urls 
