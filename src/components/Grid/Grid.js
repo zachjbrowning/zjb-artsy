@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './Grid.module.scss';
 import Tile from './Tile';
+import { load_projects } from '../../../lib/redux/actions/projectsAction';
+import { load_recipes } from '../../../lib/redux/actions/recipesAction';
 
 export default function Grid(props) {
+    const dispatch = useDispatch();
+
     var list = [];
     var projects = false;
     if (props.list === "projects") {
@@ -18,6 +21,11 @@ export default function Grid(props) {
     }
 
     useEffect(() => {
+        if (props.list === 'projects') {
+            dispatch(load_projects());
+        } else if (props.list === 'recipes') {
+            dispatch(load_recipes());
+        }
         document.getElementById("grid").scrollIntoView({behavior:'smooth'});
     }, [props.list])
 
