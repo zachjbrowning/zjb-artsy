@@ -19,21 +19,22 @@ export default function Grid(props) {
     } else if (props.list === 'contact') {
         list = useSelector(state => state.contact);
     }
-
     useEffect(() => {
-        if (props.list === 'projects') {
+        if (props.list === 'projects' && list === false) {
             dispatch(load_projects());
-        } else if (props.list === 'recipes') {
+        } else if (props.list === 'recipes' && list === false) {
             dispatch(load_recipes());
         }
         document.getElementById("grid").scrollIntoView({behavior:'smooth'});
-    }, [props.list])
+    }, [list])
 
     return <div id="grid" className={`columns is-multiline ${styles.grid}`}>
         {
+            list ? 
             list.map((val, idx) => (
                 <Tile key={idx} tile={val} projects={projects} />
             ))
+            : ""
         }
         
     </div>

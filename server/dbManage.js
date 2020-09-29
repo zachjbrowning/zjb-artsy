@@ -1,4 +1,4 @@
-const fs = requrie('fs');
+const fs = require('fs');
 
 
 
@@ -9,5 +9,5 @@ exports.getRecipes = () => {
 
 exports.getProjects = () => {
     var data = require('./db.json');
-    return data.recipes;
+    return data.projects;
 }

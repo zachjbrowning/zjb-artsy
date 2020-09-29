@@ -18,10 +18,12 @@ export default function Modal() {
     else list = useSelector(state => state.recipes);
     
     var chosen = false;
-    for (var item of list) {
-        if (item.title === active.name) {
-            chosen = item;
-            break;
+    if (list) {
+        for (var item of list) {
+            if (item.title === active.name) {
+                chosen = item;
+                break;
+            }
         }
     }
 

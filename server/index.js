@@ -15,14 +15,14 @@ app.use(express.static(DIST_DIR));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
-app.get('/recipes', (req, res) => {
+app.get('/api/recipes', (req, res) => {
     var recipes = db.getRecipes();
     res.send({ recipes : recipes});
 })
 
-app.get('/projects', (req, res) => {
-    var recipes = db.getProjects();
-    res.send({ recipes : recipes});
+app.get('/api/projects', (req, res) => {
+    var projects = db.getProjects();
+    res.send({ projects : projects});
 })
 
 //Routing, default sends all urls 
@@ -32,5 +32,5 @@ app.get('/*', (req,res) => {
 
 //Listening for requests
 app.listen(port, () => {
-    console.log('Listening on port ' + port);
+    console.log('Listening on port' + port);
 })
