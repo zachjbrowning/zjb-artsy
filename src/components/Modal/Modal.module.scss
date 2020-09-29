@@ -1,7 +1,12 @@
 .content {
     padding:1rem;
-    p {
+    padding-top:0rem;
+    p, li {
         font-family : "Roboto";
+    }
+    ul {
+        list-style-type:disc !important;
+        margin-left:1rem;
     }
     .header {
         margin-right:2rem;
@@ -34,10 +39,10 @@
         height: 90vh;
     }
     .closer {
-        position:absolute;
+        position:sticky;
         width:2rem;
         top:1rem;
-        right:1rem;
+        left:calc(100% - 3rem);
         &:hover {
             opacity:0.5;
             cursor: pointer;
