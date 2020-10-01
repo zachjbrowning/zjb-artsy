@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './Modal.module.scss';
 
+import parse from '../../../lib/utils/parser';
+
 export default function Recipe(props) {
     
 
@@ -9,13 +11,13 @@ export default function Recipe(props) {
         <p>{props.item?.explain}</p>
 
         <h3 className={styles.subheader}>Description</h3>
-        <p>{props.item?.describe}</p>
+        <p>{props.item?.describe ? parse(props.item?.describe) : ""}</p>
 
         <h3 className={styles.subheader}>Ingredients</h3>
-        <p>{props.item?.ingredients}</p>
+        <ul>{props.item?.ingredients ? props.item.ingredients.map((out, index) => <li key={index}>{parse(out)}</li>) : ""}</ul>
 
         <h3 className={styles.subheader}>Method</h3>
-        <p>{props.item?.method}</p>
+        <ul>{props.item?.method ? props.item.method.map((out, index) => <li key={index}>{parse(out)}</li>) : ""}</ul>
 
     </div>
 }
