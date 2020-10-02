@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
-    "build": "webpack --mode production",
+    "build": "rm -r dist; mkdir dist; cp -r public dist; webpack --mode production",
     "dev": "webpack-dev-server --open --mode development"
   },
   "repository": {

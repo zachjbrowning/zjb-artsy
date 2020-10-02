@@ -34,7 +34,25 @@
             "explain" : "roast pumpkin risotto",
             "describe" : ["Honestly this one is just tasty."],
             "ingredients" : [["2 cups arborio rice"], ["idk how much vegetable stock"], ["half a butternut pumpkin"], ["cup of chopped mushies"], ["1 large onion"], ["3 cloves garlic"], ["3t dried sage (or fresh sage if you boujee)"], ["some cheese"], ["S&P to taste"], ["2T olive oil"], ["handful of baby spinach and rocket"]],
-            "method" : [["Dice the pumpkin, and roast until just cooked. (Alternatively, if you cannae be assed roasting, grate the pumpkin and just chuck it in raw)"], ["Dice the onion and garlic, then sautee in the oil over medium-high heat."], ["Once the onions are soft add the mushrooms then sautee. Honestly the more caramelization on these early ingredients the better (will mean your risotto is a bit more brown but eh). If you grated your pumpkin, you can chuck it in here."], ["Add the arborio rice. Let it cook dry until the edges of the rice are transparent."], ["Now comes the fun part. Add cup by cup the vege stock. To get it real good you should add the stock incremently which means you kind of have to stand and stir. Continue adding stock until the rice is just past al dente (or however you like it)."], ["Chuck in some cheese to melt through (or leave it out if you vegan). Then season with salt and pepper."], ["Take off the heat and stir through the baby spinach. There should be enough residual heat to cook it through."]]
+            "method" : [["Dice the pumpkin, and roast until just cooked. (Alternatively, if you cannae be assed roasting, grate the pumpkin and just chuck it in raw)"], ["Dice the onion and garlic, then sautee in the oil over medium-high heat."], ["Once the onions are soft add the mushrooms then sautee. Honestly the more caramelization on these early ingredients the better (will mean your risotto is a bit more brown but eh). If you grated your pumpkin, you can chuck it in here."], ["Add the arborio rice. Let it cook dry until the edges of the rice are transparent."], ["Now comes the fun part. Add cup by cup the vege stock. To get it real good you should add the stock incremently which means you kind of have to stand and stir. Continue adding stock until the rice is just past al dente (or however you like it)."], ["Chuck in the pumpkin and some cheese to melt through. Then season with salt and pepper."], ["Take off the heat and stir through the baby spinach. There should be enough residual heat to cook it through."]]
+        },
+        {
+            "title" : "soup",
+            "svg" : "../../../public/soup.svg",
+            "colour" : "#ef476f",
+            "explain" : "roast veg soup",
+            "describe" : ["Great way to use up any veggies that need eating. Nice in winter."],
+            "ingredients" : [["whatever roastable veggies you've got (potato, onion, carrot, garlic, zuchini...)"], ["vegetable stock"], ["salt and pepper"]],
+            "method" : [["Chop up the veggies and throw 'em on a baking tray. Drizzle with a bit of olive oil and season. Chuck in the oven on around 200 degrees C"], ["Once the veggies are close to cooked through and are nice and caramelized, throw them in a pot and cover with vegetable stock."], ["Once you're satisfied it's all cooked through, whip out the stick blender and go bonkers on it. Season to taste and you're done."], ["Good vege combos : potato and leek (maybe sautee leek instead of roasting), capsicum, sweet potato and onion, pumpkin and corn..."]]
+        },
+        {
+            "title" : "gyoza",
+            "svg" : "../../../public/gyoza.svg",
+            "colour" : "#bdb2ff",
+            "explain" : "vege dumplings",
+            "describe" : ["Good op if you be feeling a tad fancy"],
+            "ingredients" : [["3T neutral oil for frying, 4T for mixture"], ["1T minced ginger"], ["1 large onion"], ["2 cups finely chopped mushies"], ["1.5 cups finely shredded cabbage"], ["1.5 cups finely shredded carrot"], ["1 cup finly chopped chives"], ["S&P to taste"], ["2t sesame oil"], ["3T Shaoxing wine (chinese cooking wine)"], ["2T soy sauce"], ["1t sugar (can leave out)"], ["dumpling wrappers"]],
+            "method" : [["Chop up all your ingredients. Getting them nice and finely chopped will lead to a much more wrappable mixture."], ["Stir-fry the ginger over medium-high heat in the oil until fragrant (maybe 30 seconds), then add the onion to cook till translucent."], ["Add the mushies and stir-fry for a few minutes, until all the liquid has been released and cooked off from the mushrooms."], ["In gose the cabbage and carrot. Stir-fry for another 2 minutes or so, until liquid has again been released and cooked off. Once this is done take off heat and transfer to a mixing bowl to cool."], ["Add to the mixture all the other ingredients (minus the dumpling wrappers you numpty). Mix through until homogenous."], ["If you're white like me, go watch you're favourite how to wrap dumplings tutorial and go nuts."], ["Cook them however you like then eat! My favourite is pan fry them. Put just enough oil to cover the bottom of the pan and heat up. Pop in the dumplings and cook until there is a nice crisp on the bottom. I like to then flip them over before adding a bit of water (maybe half a cup) to let the steam and cook through. Wait till the water is evaporated and they crisp up again before taking them out."]]
         }
     ],
     "projects" : [
@@ -42,13 +60,19 @@
             "title" : "this website",
             "svg" : "../../../public/artbro.svg",
             "colour" : "#bdb2ff",
-            "date" : "September 2020"
+            "date" : "September 2020",
+            "summary" : ["The continual development of this website kind of tells the tale of my own evolution as a developer. I first made it in January 2020, using Django with pure HTML, CSS and some injected JS. Iteration two moved on to React, but still had quite an outdated, monochromatic feel to it. This website is iteration three! It was made using my React app boilerplate. I'm quite happy with how it turned out, it is a bit of a return to simplicity but I like it!"],
+            "learning" : [["Making a more textured, elegant interface"], ["playing around with svg's, all custom made in Adobe Illustrator"], ["A bit of a consolidation of my growth and learning over the past year, to produce a very simple but sophisticated webpage!"]],
+            "notes" : [["The two previous websites exist in an older repo, which you can see ", "<a=https://github.com/zachjbrowning/zjbsite>here", "."]]
         },
         {
             "title" : "openbook",
             "svg" : "../../../public/openbook.svg",
             "colour" : "#f898a4",
-            "date" : "September 2020"
+            "date" : "September 2020",
+            "summary" : ["Hate extensive note taking 😤😤? Sick of online open book exams with way too much content (thanks coronavirus😠😠🦠🦠)?? The solution: Openbook 📖. Openbook is a simple webapp that organises and stores your notes for you, with the capacity to organise and search through your notes by note titles, keywords, or the content itself. Exam mode provides a simple, uncluttered interface to quickly find your relevant notes, rather than wasting precious time thumbing through reams of unorganised notes🥰🥰!!"],
+            "learning" : [["A fully functional API utilising the REST framework"], ["Doing a proper full stack, with django as the backend and react as the frontend"], ["I tried to be a little bit more elegant with the styling, using react spring in some places to aid the animations."]],
+            "notes" : [["This is actually a little tool I initially created to help me with an exam. I then decided it was a concept that might actually be useful, so I turned it into a website!"], ["You can find the site at ", "<a=https://openbook-notes.tech/>openbook-notes.tech", "."]]
         },
         {
             "title" : "reaction",
@@ -57,7 +81,7 @@
             "date" : "July 2020",
             "summary" : ["A little web app I made using React Made this cause I was bored and wanted to play around with React a bit. Have a go at it ", "<a=https://zachjbrowning.tech/reaction/>here", ". Next time I'm bored I'll add some more minigames to it!"],
             "learning" : [["React, react, react"], ["Backend frontend interactions"], ["JS async function overkill"]],
-            "notes" : [["Mostly... visit it, see for yourself and try get a high score!!"], ["I like the minimal theme on this one"]]
+            "notes" : [["I like the minimal theme on this one"]]
         },
         {
             "title" : "zest",
