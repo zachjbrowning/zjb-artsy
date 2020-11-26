@@ -1,6 +1,25 @@
 {
     "recipes" : [
         {
+            "title" : "paech + raspberry tart",
+            "svg" : "../../../public/tart.svg",
+            "colour" : "#fee440",
+            "explain" : "easy tart that you can whip up hella quick and is pretty",
+            "describe" : ["This is my favourite dessert from when I was a kid. Quick to make, and you can just use tinned peaches and frozen raspberries so its even easier."],
+            "ingredients" : [["125 salted butter, softened"], ["1 cup sugar"], ["1t vanilla"], ["2 eggs"], ["1.5 cups SRF"], ["2 peaches cut as wedges"], ["150g raspberries"], ["2T icing sugar if you extra"]],
+            "method" : [["Set oven to 160C and linke a 22cm round cake tin with baking paper"], ["Cream the butter, sugar and vanilla together. Have fun using a fork if you don't have a stand mixer..."], ["Add eggs and beat well"], ["Fold in the flour and spoon into cake tin"], ["Top it with the peaches and raspberries"], ["Bake till done (usually about an hour"], ["Sprinkle with icing sugar on top if you fancy"]]
+        },
+        {
+            "title" : "mushroom + leek pie",
+            "svg" : "../../../public/pie.svg",
+            "colour" : "#ba181b",
+            "explain" : "tasty pies that freeze well",
+            "describe" : ["My new favourite meal prep... lots of mushroom, very tasty and can just pop in the oven from the freezer whenever I want one! Adimttedly does have more dairy in it than I'd like but hey"],
+            "ingredients" : [["0.5kg ya fave mushrooms (doesn't have to be one type)"], ["1 large leek"], ["2T olive oil"], ["3 garlic cloves minced"], ["100g sour cream"], ["2t thyme dried or fresh"], ["s & p to taste"], ["1t lemon juice"], ["1t worcestershire (or really any flavouring you want, I did bbq sauce and soy sauce last time)"], ["bit of sriracha"], ["handful of grated parmesan"], ["3 sheets puff pastry"], ["150g  high moisture content cheese"]],
+            "method" : [["Go bonkers dicing all the mushrooms and the leeks"], ["Sautee the leek and garlic over medium heat till soft"], ["Add all the mushies and sautee until cooked out properly"], ["Throw in sour cream, thyme and pepper and cook till it thickens, about three minutes"], ["Let the mixture cool in a bowl for a bit, before adding the lemon, sriracha, parmesan and worster. Adjust to taste."], ["From here, it's really just contstruction. I don't have a pie maker so I preheat oven to ~220C and then cut my puff pastry sheets in half so I can make little hand pies/pasties. Chuck some mixture off center of your pastry halves, and sprinkle some cheese on top, then them fold them over to make ya little pie pocket thingy"], ["Crimp the edges with a fork and poke some holes in the top. Adding a bit of egg wash before you chuck them in the oven will also help them look nice and shiny"]]
+
+        },
+        {
             "title" : "dahl",
             "svg" : "../../../public/dahl.svg",
             "colour" : "#f9c74f",
