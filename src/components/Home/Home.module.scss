@@ -1,0 +1,17 @@
+.home {
+    width:100%;
+    display:flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    font-size:1.5rem;
+
+    & > div {
+        flex-basis:100%;
+        flex-grow:1;
+        text-align:center;
+    }
+
+    .box {
+        margin-bottom:2rem;
+    }
+}

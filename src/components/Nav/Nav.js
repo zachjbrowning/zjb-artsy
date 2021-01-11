@@ -44,11 +44,13 @@ export default function Nav() {
     }
     
     return <div id="nav" className={styles.constrict}>
-       
         <div className={`${styles.nav} ${isOpen ? styles.open : ""}`}>
             <div onClick={() => setOpen(false)} className={styles.close}>
                 <svg viewBox="0 0 8192 8192">{close}</svg>
             </div>
+            <Link id="nav-home" onClick={setActive} to={"/"} className={`${styles.navItem} ${history.location.pathname === '/' ? styles.active : ""}`}>
+                home
+            </Link>
             <Link id="nav-projects" onClick={setActive} to={"/projects"} className={`${styles.navItem} ${history.location.pathname === '/projects' ? styles.active : ""}`}>
                 projects
             </Link>
