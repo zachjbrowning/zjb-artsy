@@ -29,6 +29,7 @@ export default function Nav() {
         setOpen(false);
         switch (history.location.pathname) {
             case '/':
+                document.getElementById("nav-home").classList.remove(styles.active);
                 break;
             case '/projects':
                 document.getElementById("nav-projects").classList.remove(styles.active);
