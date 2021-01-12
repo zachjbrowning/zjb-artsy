@@ -12,7 +12,8 @@ export default function Tile(props) {
         if (props.tile?.alternate) {
             props.tile.alternate(e);
         } else {
-            dispatch(set_active(props.projects, props.tile?.title));
+            
+            dispatch(set_active(props.role, props.tile?.title));
         }
     }
 
@@ -21,6 +22,10 @@ export default function Tile(props) {
         <div className={styles.text}>
             {props.tile?.title}
         </div>
-        <div className={styles.img}><div style={{backgroundImage : `url(${props.tile?.svg})`}}></div></div>
+        {
+            props.tile.svg ?
+            <div className={styles.img}><div style={{backgroundImage : `url(${props.tile?.svg})`}}></div></div>
+            : ""
+        }
     </div>
 }

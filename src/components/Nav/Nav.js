@@ -22,6 +22,9 @@ export default function Nav() {
         case '/contact':
             word = 'contact';
             break;
+        case '/sustainability':
+            word = 'sustainability';
+            break;
     }
     
     function setActive(e) {
@@ -39,6 +42,9 @@ export default function Nav() {
                 break;
             case '/contact':
                 document.getElementById("nav-contact").classList.remove(styles.active);
+                break;
+            case '/sustainability':
+                document.getElementById("nav-sustainability").classList.remove(styles.active);
                 break;
             default:
         }
@@ -58,6 +64,9 @@ export default function Nav() {
             <Link id="nav-recipes" onClick={setActive} to={"/recipes"} className={`${styles.navItem} ${history.location.pathname === '/recipes' ? styles.active : ""}`}>
                 recipes
             </Link>
+            <Link id="nav-sustainability" onClick={setActive} to={"/sustainability"} className={`${styles.navItem} ${history.location.pathname === '/sustainability' ? styles.active : ""}`}>
+                sustainability
+            </Link>            
             <Link id="nav-contact" onClick={setActive} to={"/contact"} className={`${styles.navItem} ${history.location.pathname === '/contact' ? styles.active : ""}`}>
                 contact
             </Link>

@@ -3,7 +3,7 @@
         {
             "title" : "peach + raspberry tart",
             "svg" : "../../../public/tart.svg",
-            "colour" : "#52b788",
+            "colour" : "#52b7880",
             "explain" : "easy tart that you can whip up hella quick and is pretty",
             "describe" : ["This is my favourite dessert from when I was a kid. Quick to make, and you can just use tinned peaches and frozen raspberries so its even easier."],
             "ingredients" : [["125 salted butter, softened"], ["1 cup sugar"], ["1t vanilla"], ["2 eggs"], ["1.5 cups SRF"], ["2 peaches cut as wedges"], ["150g raspberries"], ["2T icing sugar if you extra"]],

@@ -8,13 +8,16 @@ import { unset_active  } from '../../../lib/redux/actions/activeAction';
 import { close } from '../Utils/Icon';
 import Recipe from './Recipe';
 import Project from './Project';
+import Sustain from './Sustain';
 
 export default function Modal() {
     const dispatch = useDispatch();
     const active = useSelector(state => state.active);
     
     var list = [];
-    if (active.project) list = useSelector(state => state.projects);
+
+    if (active.role === "projects") list = useSelector(state => state.projects);
+    else if (active.role === "sustainability") list = useSelector(state => state.sustainability);
     else list = useSelector(state => state.recipes);
     
     var chosen = false;
@@ -27,6 +30,11 @@ export default function Modal() {
         }
     }
 
+    if (chosen) {
+        if (active.role === "projects") chosen = <Project item={chosen} />;
+        else if (active.role === "sustainability") chosen = <Sustain item={chosen} />;
+        else if (active.role === "recipes") chosen = <Recipe item={chosen} />; 
+    }
     
     
     function closer() {
@@ -45,10 +53,7 @@ export default function Modal() {
             </div>
 
             {
-                chosen ? <>
-                    { active.project ? <Project item={chosen} /> : <Recipe item={chosen} />}
-
-                </>  : <>
+                chosen ? chosen  : <>
                     Hmmm something went wrong...
                 </>
             }

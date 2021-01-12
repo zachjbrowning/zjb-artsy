@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './Home.module.scss';
+import styles from './Blurbs.module.scss';
 
 export default function Home() {
-    return <div className={`${styles.home}`}>
+    return <div className={`${styles.main}`}>
         <div className={`${styles.box}`}>
             Hi there!
             <br/>
