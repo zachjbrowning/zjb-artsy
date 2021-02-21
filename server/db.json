@@ -3,7 +3,7 @@
         {
             "title" : "peach + raspberry tart",
             "svg" : "../../../public/tart.svg",
-            "colour" : "#52b7880",
+            "colour" : "#52b788",
             "explain" : "easy tart that you can whip up hella quick and is pretty",
             "describe" : ["This is my favourite dessert from when I was a kid. Quick to make, and you can just use tinned peaches and frozen raspberries so its even easier."],
             "ingredients" : [["125 salted butter, softened"], ["1 cup sugar"], ["1t vanilla"], ["2 eggs"], ["1.5 cups SRF"], ["2 peaches cut as wedges"], ["150g raspberries"], ["2T icing sugar if you extra"]],
@@ -109,7 +109,7 @@
             "date" : "June 2020",
             "summary" : ["This is a framework I worked on developing during my term 1/2 break. My dad wanted me to build a website for him, but I didn't want to always have to check up and work on the site for him. I wanted something that was more friendly to him, but still allowed me to build the more complex aspects of the site. My solution was the Zest framework, which builds pages from JSON files that anyone could write. I've taken the site down but you can still see it from the github repository."],
             "learning" : [["Creating a frontend that makes calls to a backend to collect information"], ["Building a framework that fails gracefully, rather than crashing without showing cause for the error"], ["Getter deeper and deeper into the wonders of React.js!!"]],
-            "notes" : [["This is by no means a finished product. I've run out of time to work on it for now but I hope to be able to come back and clean it up and make it into a more useable product."],["This project was inspired by building this website and using a json file to produce this exact page. Every time I add a project, I just edit the json file. The parser I built for that has found its way to here, letting me add html-ish stuff like ", "<a=https://zachjbrowning.tech/>links,", "<b> bold,", " and ", "<i> italics."]]
+            "notes" : [["This is by no means a finished product. I've run out of time to work on it for now but I hope to be able to come back and clean it up and make it into a more useable product."],["This project was inspired by building this website and using a json file to produce this exact page. Every time I add a project, I just edit the json file. The parser I built for that has found its way to here, letting me add html-ish stuff like ", "<a=https://zachjbrowning.com/>links,", "<b> bold,", " and ", "<i> italics."]]
         },
         {
             "title" : "investbot",
