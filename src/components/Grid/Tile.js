@@ -17,7 +17,6 @@ export default function Tile(props) {
         }
     }
 
-
     return <div onClick={open} style={{backgroundColor : props.tile?.colour}} className={`${styles.tile}`}>
         <div className={styles.text}>
             {props.tile?.title}
