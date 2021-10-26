@@ -1,0 +1,237 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Infrastructure for ausgreener webapp"
+Parameters:
+
+    DomainName: 
+      Type: String
+      Default: australiangreener.org
+
+    PipelineScheduleRoleArn:
+      Type: String
+
+Resources:
+    
+    StaticSiteS3:
+        Type: AWS::S3::Bucket
+        DeletionPolicy: Retain
+        Properties:
+            BucketName: !Sub "${DomainName}"
+            WebsiteConfiguration:
+                IndexDocument: "index.html"
+                ErrorDocument: "index.html"
+            LifecycleConfiguration:
+              Rules:
+                - ExpirationInDays: 30
+                  Id: Expire objects in 30 days
+                  Status: Enabled
+
+    WwwSiteS3:
+        Type: "AWS::S3::Bucket"
+        DeletionPolicy: Retain
+        Properties:
+            BucketName: !Sub "www.${DomainName}"
+
+    PipelineS3:
+        Type: "AWS::S3::Bucket"
+        DeletionPolicy: Retain
+        Properties:
+            BucketName: !Sub "codepipeline-${AWS::Region}-website"
+
+    BuildOutputsS3:
+        Type: "AWS::S3::Bucket"
+        DeletionPolicy: Retain
+        Properties:
+            BucketName: "pipeline-build-resources"
+
+    StaticSiteS3Policy:
+        Type: "AWS::S3::BucketPolicy"
+        DeletionPolicy: Retain
+        Properties:
+            Bucket: !Ref StaticSiteS3
+            PolicyDocument: 
+                Version: "2012-10-17"
+                Statement: 
+                  - 
+                    Sid: "AddPerm"
+                    Effect: "Allow"
+                    Principal: "*"
+                    Action: "s3:GetObject"
+                    Resource: !Sub "arn:aws:s3:::${StaticSiteS3}/*"
+
+    CodePipeline:
+        Type: "AWS::CodePipeline::Pipeline"
+        DeletionPolicy: Retain
+        Properties:
+            Name: "website-pipeline"
+            RoleArn: !Sub "arn:aws:iam::${AWS::AccountId}:role/service-role/AWSCodePipelineServiceRole-${AWS::Region}-website-pipeline"
+            ArtifactStore: 
+                Location: !Ref PipelineS3
+                Type: "S3"
+            Stages: 
+              - 
+                Name: "Source"
+                Actions: 
+                  - 
+                    Name: "Source"
+                    ActionTypeId: 
+                        Category: "Source"
+                        Owner: "AWS"
+                        Provider: "CodeStarSourceConnection"
+                        Version: "1"
+                    Configuration: 
+                        BranchName: "main"
+                        ConnectionArn: !Sub "arn:aws:codestar-connections:${AWS::Region}:${AWS::AccountId}:connection/6b329204-9e25-4374-995b-bbd3aab7f807"
+                        FullRepositoryId: "zachjbrowning/australian-greener"
+                        OutputArtifactFormat: "CODE_ZIP"
+                    OutputArtifacts: 
+                      - 
+                        Name: "SourceArtifact"
+                    Region: !Ref AWS::Region
+                    Namespace: "SourceVariables"
+                    RunOrder: 1
+              - 
+                Name: "Build"
+                Actions: 
+                  - 
+                    Name: "Build"
+                    ActionTypeId: 
+                        Category: "Build"
+                        Owner: "AWS"
+                        Provider: "CodeBuild"
+                        Version: "1"
+                    Configuration: 
+                        ProjectName: "aus-greener-app"
+                    InputArtifacts: 
+                      - 
+                        Name: "SourceArtifact"
+                    OutputArtifacts: 
+                      - 
+                        Name: "BuildArtifact"
+                    Region: !Ref AWS::Region
+                    Namespace: "BuildVariables"
+                    RunOrder: 1
+              - 
+                Name: "Cloudform"
+                Actions: 
+                  - 
+                    Name: "Cloudform"
+                    ActionTypeId: 
+                        Category: "Deploy"
+                        Owner: "AWS"
+                        Provider: "CloudFormation"
+                        Version: "1"
+                    Configuration: 
+                        ActionMode: "CREATE_UPDATE"
+                        Capabilities: "CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM"
+                        RoleArn: !Sub "arn:aws:iam::${AWS::AccountId}:role/pipeline-cloudformation"
+                        StackName: "AusgreenerStack"
+                        TemplatePath: "SourceArtifact::infra/cloudformation/index.yml"
+                    InputArtifacts: 
+                      - 
+                        Name: "SourceArtifact"
+                    Region: !Ref AWS::Region
+                    RunOrder: 1
+              - 
+                Name: "StagingDeploy"
+                Actions: 
+                  - 
+                    Name: "DeployStaging"
+                    ActionTypeId: 
+                        Category: "Invoke"
+                        Owner: "AWS"
+                        Provider: "Lambda"
+                        Version: "1"
+                    Configuration: 
+                        FunctionName: "DeployLambda"
+                        UserParameters: "staging.australiangreener.org"
+                    RunOrder: 1
+              -
+                Name: "ProdDeploy"
+                Actions: 
+                  - 
+                    Name: "ProdDeploy"
+                    ActionTypeId: 
+                        Category: "Invoke"
+                        Owner: "AWS"
+                        Provider: "Lambda"
+                        Version: "1"
+                    Configuration: 
+                        FunctionName: "DeployLambda"
+                        UserParameters: "australiangreener.org"
+                    RunOrder: 1
+
+              
+
+    PipelineSchedule:
+        Type: AWS::Events::Rule
+        Properties: 
+            Name: Pipeline-deploy-schedule
+            Description: Ensure pipeline is run more frequently than file deletion
+            ScheduleExpression: rate(29 days)
+            State: ENABLED
+            Targets:
+                - Arn: !Sub arn:aws:codepipeline:${AWS::Region}:${AWS::AccountId}:${CodePipeline}
+                  Id: !Sub "${CodePipeline}-Schedule"
+                  RoleArn: !Ref PipelineScheduleRoleArn
+
+    CodeBuildProject:
+        Type: "AWS::CodeBuild::Project"
+        DeletionPolicy: Retain
+        Properties:
+            Name: "aus-greener-app"
+            Description: "Australian greener web app"
+            Source: 
+                BuildSpec: "infra/buildspec/buildspec.yml"
+                InsecureSsl: false
+                Type: "CODEPIPELINE"
+            Artifacts:
+              Type: CODEPIPELINE
+            SecondaryArtifacts: 
+                -
+                  Name: "contact-lambda"
+                  Type: "S3"
+                  ArtifactIdentifier: "contactLambdaBuild"
+                  EncryptionDisabled: false
+                  Location: !Ref BuildOutputsS3
+                -
+                  Name: "infrastructure"
+                  Type: "S3"
+                  ArtifactIdentifier: "infrastructureBuild"
+                  EncryptionDisabled: false
+                  Location: !Ref BuildOutputsS3
+                -
+                  Name: "deploy-lambda"
+                  Type: "S3"
+                  ArtifactIdentifier: "deployLambdaBuild"
+                  EncryptionDisabled: false
+                  Location: !Ref BuildOutputsS3
+                -
+                  Name: "build"
+                  Type: "S3"
+                  ArtifactIdentifier: "staticFilesBuild"
+                  EncryptionDisabled: false
+                  Location: !Ref BuildOutputsS3
+            Cache: 
+                Type: "NO_CACHE"
+            Environment: 
+                ComputeType: "BUILD_GENERAL1_SMALL"
+                Image: "aws/codebuild/amazonlinux2-x86_64-standard:3.0"
+                ImagePullCredentialsType: "CODEBUILD"
+                PrivilegedMode: false
+                Type: "LINUX_CONTAINER"
+            ServiceRole: !Sub "arn:aws:iam::${AWS::AccountId}:role/service-role/codebuild-aus-greener-app-service-role"
+            TimeoutInMinutes: 60
+            QueuedTimeoutInMinutes: 480
+            EncryptionKey: !Sub "arn:aws:kms:${AWS::Region}:${AWS::AccountId}:alias/aws/s3"
+            BadgeEnabled: false
+            LogsConfig: 
+                CloudWatchLogs: 
+                    Status: "ENABLED"
+                S3Logs: 
+                    Status: "DISABLED"
+                    EncryptionDisabled: false
+
+Outputs:
+    BuildOutputsS3:
+        Description: "Reference to bucket with build outputs"
+        Value: !Ref BuildOutputsS3
