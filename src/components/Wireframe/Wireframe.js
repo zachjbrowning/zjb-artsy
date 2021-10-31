@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Wireframe.module.scss';
 import { Switch, Route } from 'react-router-dom';
 
-import Landing from '../Landing/Landing';
+import Landing from '../Landing/Landing.tsx';
 import Nav from '../Nav/Nav';
 import Grid from '../Grid/Grid';
 import Modal from '../Modal/Modal';

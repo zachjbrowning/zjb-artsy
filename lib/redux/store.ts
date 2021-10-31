@@ -3,13 +3,12 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import rootReducer from "./reducers";
-import { apply } from "file-loader";
 
 const initialState = {};
 const middleware = [thunk];
 
 
-const constructMiddleware = (middleware) => {
+const constructMiddleware = (middleware: any) => {
   //if (process.env.NODE_ENV !== 'production') {
     return composeWithDevTools(applyMiddleware(...middleware));
   //} else return applyMiddleware(...middleware);
