@@ -5,7 +5,18 @@ phases:
     runtime-versions:
       nodejs: 12
     commands:
-      - yarn install
+      - yarn build
+      - cd dist
+      - zip -qr build.zip ./*
+      - mb build.zip ..
+      - cd ..
+      - mkdir deploy-lambda-output
+      - cp infra/lambda/DeployStaticFiles.py deploy-lambda-output
+      - cd deploy-lambda-output
+      - zip -qr deploy-lambda.zip ./*
+      - mv deploy-lambda.zip ..
+
+
   build:
     commands:
       - cd
@@ -17,6 +28,12 @@ artifacts:
     infrastructureBuild:
       files:
         - ./infra/cloudformation/*
+    deployLambdaBuild:
+      files:
+        - deploy-lambda.zip
+    staticFilesBuild:
+      files:
+        - build.zip
         
 
 cache:

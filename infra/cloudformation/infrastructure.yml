@@ -175,12 +175,6 @@ Resources:
               Type: CODEPIPELINE
             SecondaryArtifacts: 
                 -
-                  Name: "contact-lambda"
-                  Type: "S3"
-                  ArtifactIdentifier: "contactLambdaBuild"
-                  EncryptionDisabled: false
-                  Location: !Ref BuildOutputsS3
-                -
                   Name: "infrastructure"
                   Type: "S3"
                   ArtifactIdentifier: "infrastructureBuild"

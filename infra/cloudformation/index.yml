@@ -9,7 +9,7 @@ Parameters:
 
     TemplateBaseUrl:
         Type: String
-        Default: https://temp-for-cfm.s3.ap-southeast-2.amazonaws.com
+        Default: https://pipeline-build-resources.s3.ap-southeast-2.amazonaws.com/infrastructure/infra/cloudformation
 
 Resources:
     
