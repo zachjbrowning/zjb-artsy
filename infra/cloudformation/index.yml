@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Cloudformation for ausgreener webapp"
+Transform: AWS::Serverless-2016-10-31
+Parameters:
+
+    DomainName:
+        Type: String
+        Default: zachjbrowning.com
+
+    TemplateBaseUrl:
+        Type: String
+        Default: https://temp-for-cfm.s3.ap-southeast-2.amazonaws.com
+
+Resources:
+    
+    Infrastructure:
+        Type: AWS::CloudFormation::Stack
+        DeletionPolicy: Retain
+        Properties:
+            Parameters:
+                DomainName: !Ref DomainName
+                PipelineScheduleRoleArn: arn:aws:iam::671319357614:role/pipeline-schedule-invoker
+            TemplateURL: !Sub "${TemplateBaseUrl}/infrastructure.yml"
+
+
