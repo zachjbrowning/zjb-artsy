@@ -19,11 +19,6 @@ phases:
       - zip -qr deploy-lambda.zip ./*
       - mv deploy-lambda.zip ..
 
-
-  build:
-    commands:
-      - cd
-
 artifacts:
   files:
     - '**.*'
