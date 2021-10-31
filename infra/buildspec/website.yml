@@ -5,6 +5,9 @@ phases:
     runtime-versions:
       nodejs: 12
     commands:
+      - yarn install
+  build:
+    commands:
       - yarn build
       - cd dist
       - zip -qr build.zip ./*
