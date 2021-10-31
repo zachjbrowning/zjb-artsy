@@ -11,7 +11,7 @@ phases:
       - yarn build
       - cd dist
       - zip -qr build.zip ./*
-      - mb build.zip ..
+      - mv build.zip ..
       - cd ..
       - mkdir deploy-lambda-output
       - cp infra/lambda/DeployStaticFiles.py deploy-lambda-output
