@@ -168,7 +168,7 @@ Resources:
             Name: "zjb-site"
             Description: "zjbsite"
             Source: 
-                BuildSpec: "infra/buildspec/buildspec.yml"
+                BuildSpec: "infra/buildspec/website.yml"
                 InsecureSsl: false
                 Type: "CODEPIPELINE"
             Artifacts:
