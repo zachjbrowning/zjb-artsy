@@ -2,18 +2,13 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 var path = require('path');
 
 module.exports = {
-    entry: './src/index.js',
-    devServer: {
-        historyApiFallback: true,
+    entry: './src/index.tsx',
+    devtool: 'inline-source-map',
+    resolve: {
+      extensions: ['.ts', '.tsx','json', '.js']
     },
     optimization: {
-      runtimeChunk: {
-        name: 'manifest'
-      },
       splitChunks: {
-        chunks: "all",
-        maxInitialRequests: Infinity,
-        minSize: 0,
         cacheGroups: {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
@@ -25,12 +20,19 @@ module.exports = {
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: "[name].js",
+      filename: "[name]-[contenthash].js",
       chunkFilename: "[id]-[chunkhash].js",
       publicPath: '/'
     },
     module: {
     rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "ts-loader"
+        }
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -47,7 +49,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|gif|ico)$/i,
+        test: /\.(png|jpg|gif|ico|svg)$/i,
         use: [
           {
             loader: 'url-loader',
@@ -70,20 +72,14 @@ module.exports = {
             },
             'sass-loader',
         ]
-      },
-      {
-        test: /\.svg/,
-        use: {
-          loader: 'svg-url-loader',
-          options: {},
-        }
       }
     ]
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
-      filename: "./index.html"
+      filename: "./index.html",
+      favicon: './public/favicon.ico'
     })
   ]
 };

@@ -80,8 +80,8 @@ Resources:
                         Version: "1"
                     Configuration: 
                         BranchName: "main"
-                        ConnectionArn: !Sub "arn:aws:codestar-connections:${AWS::Region}:${AWS::AccountId}:connection/6b329204-9e25-4374-995b-bbd3aab7f807"
-                        FullRepositoryId: "zachjbrowning/australian-greener"
+                        ConnectionArn: !Sub "arn:aws:codestar-connections:${AWS::Region}:${AWS::AccountId}:connection/539dc981-1752-4b26-81fa-547f308fd286"
+                        FullRepositoryId: "zachjbrowning/zjb-artsy"
                         OutputArtifactFormat: "CODE_ZIP"
                     OutputArtifacts: 
                       - 
