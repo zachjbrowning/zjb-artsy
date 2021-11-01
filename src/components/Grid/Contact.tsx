@@ -6,7 +6,6 @@ import linkedin from "../../constants/Contact/linkedin.svg"
 import resume from "../../constants/Contact/resume.svg"
 import Grid from './Grid';
 import Tile from './Tile';
-import CV from "../../public/ZJB-CV.pdf";
 
 export default function Recipes() {
 
