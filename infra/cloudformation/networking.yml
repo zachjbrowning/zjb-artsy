@@ -6,6 +6,8 @@ Parameters:
         Type: String
         Default: zachjbrowning.com
 
+Resources:
+
     CloudFrontDistribution:
         Type: "AWS::CloudFront::Distribution"
         Properties:
