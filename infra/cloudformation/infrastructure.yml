@@ -31,17 +31,11 @@ Resources:
         Properties:
             BucketName: !Sub "www.${DomainName}"
 
-    PipelineS3:
+    ZjbSiteBucket:
         Type: "AWS::S3::Bucket"
         DeletionPolicy: Retain
         Properties:
-            BucketName: !Sub "codepipeline-zjb-site"
-
-    BuildOutputsS3:
-        Type: "AWS::S3::Bucket"
-        DeletionPolicy: Retain
-        Properties:
-            BucketName: "pipeline-build-resources"
+            BucketName: "zjb-site-resources"
 
     StaticSiteS3Policy:
         Type: "AWS::S3::BucketPolicy"
@@ -65,7 +59,7 @@ Resources:
             Name: "zjb-site"
             RoleArn: arn:aws:iam::671319357614:role/service-role/AWSCodePipelineServiceRole-ap-southeast-2-website-pipeline
             ArtifactStore: 
-                Location: !Ref PipelineS3
+                Location: !Ref ZjbSiteBucket
                 Type: "S3"
             Stages: 
               - 
@@ -147,8 +141,6 @@ Resources:
                     RunOrder: 1
 
 
-              
-
     PipelineSchedule:
         Type: AWS::Events::Rule
         Properties: 
@@ -179,19 +171,19 @@ Resources:
                   Type: "S3"
                   ArtifactIdentifier: "infrastructureBuild"
                   EncryptionDisabled: false
-                  Location: !Ref BuildOutputsS3
+                  Location: !Ref ZjbSiteBucket
                 -
                   Name: "deploy-lambda"
                   Type: "S3"
                   ArtifactIdentifier: "deployLambdaBuild"
                   EncryptionDisabled: false
-                  Location: !Ref BuildOutputsS3
+                  Location: !Ref ZjbSiteBucket
                 -
                   Name: "build"
                   Type: "S3"
                   ArtifactIdentifier: "staticFilesBuild"
                   EncryptionDisabled: false
-                  Location: !Ref BuildOutputsS3
+                  Location: !Ref ZjbSiteBucket
             Cache: 
                 Type: "NO_CACHE"
             Environment: 
@@ -211,8 +203,3 @@ Resources:
                 S3Logs: 
                     Status: "DISABLED"
                     EncryptionDisabled: false
-
-Outputs:
-    BuildOutputsS3:
-        Description: "Reference to bucket with build outputs"
-        Value: !Ref BuildOutputsS3

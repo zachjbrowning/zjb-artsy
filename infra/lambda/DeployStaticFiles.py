@@ -2,7 +2,7 @@ import boto3
 import zipfile 
 from io import BytesIO 
 
-INPUT_BUCKET = "ausgreener-build-resources"
+INPUT_BUCKET = "zjb-site-resources"
 INPUT_KEY = "build/build.zip"
 
 s3 = boto3.client('s3') 
@@ -65,7 +65,8 @@ def get_file_type(filename):
         ".ico" : "image/x-icon",
         ".svg" : "image/svg+xml",
         ".ttf" : "binary/octet-stream",
-        ".txt" : "text/plain"
+        ".txt" : "text/plain",
+        ".pdf" : "application/pdf"
         }
     
     
@@ -76,4 +77,4 @@ def get_file_type(filename):
             return type_mapping[key]
             
     print("No mapping for ", filename)
-    return ""
+    return "application"

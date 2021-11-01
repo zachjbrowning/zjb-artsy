@@ -51,7 +51,7 @@ const recipes = [
         svg : resume,
         colour : "#57cc99",
         alternate : () => {
-            window.open("https://zachjbrowning.com/ZJB-CV.pdf");
+            window.open("ZJB-CV.pdf");
         }
     }
 ]

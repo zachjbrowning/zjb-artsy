@@ -10,6 +10,10 @@ const APP_ENTRY = path.join(DIST_DIR, 'index.html');
 app.use(express.static(DIST_DIR));
 
 //Listening for requests
+app.get('/*', (req, res) => {
+    res.sendFile(APP_ENTRY); 
+})
+
 app.listen(port, () => {
     console.log('Listening on port' + port);
 })
