@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Landing.scss';
-import bricks from "../../public/bricks.svg";
-import artbro from "../../public/artbro.svg";
+import bricks from "../../constants/Static/bricks.svg";
+import artbro from "../../constants/Static/artbro.svg";
 
 export default function Landing() {
     const [text, setText] = useState("");

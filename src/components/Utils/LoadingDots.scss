@@ -1,0 +1,53 @@
+
+.loader-box {
+    display:flex;
+    justify-content: center;
+    .loading-dots {
+        display:flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+        svg {
+            margin:0.5rem;
+            width:1rem;
+        }
+        #loading-dot-1 {
+            animation: 1.3s ease-in-out infinite dot1;
+        }
+        #loading-dot-2 {
+            animation: 1.3s ease-in-out infinite dot2;
+        }
+        #loading-dot-3 {
+            animation: 1.3s ease-in-out infinite dot3;
+        }
+    }
+}
+@mixin baseState {
+    transform: scale(1);
+    fill: #5C7464;
+}
+@mixin changedState {
+    transform: scale(1.5);
+    fill: #61a778;
+}
+
+@keyframes dot1 {
+    0%   {@include baseState}
+    30%  {@include changedState}
+    60%  {@include baseState}
+    100% {@include baseState}
+}
+
+@keyframes dot2 {
+    0%   {@include baseState}
+    20%   {@include baseState}
+    50%  {@include changedState}
+    80%  {@include baseState}
+    100% {@include baseState}
+}
+
+@keyframes dot3 {
+    0%   {@include baseState}
+    40%   {@include baseState;}
+    70%  {@include changedState}
+    100%  {@include baseState}
+}

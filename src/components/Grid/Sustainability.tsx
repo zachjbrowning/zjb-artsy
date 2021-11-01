@@ -1,6 +1,19 @@
-import * as types from '../types';
+import React from 'react';
 
-const initialState = [
+import Grid from './Grid';
+import Tile from './Tile';
+
+export default function Recipes() {
+
+    return <Grid>
+       {
+           recipes.map((v, i) => <Tile key={i} tile={v} role={'sustainability'} />)
+       } 
+    </Grid>
+}
+
+
+const recipes = [
     {
         title : 'banking',
         colour : "#1b4332",
@@ -43,16 +56,4 @@ const initialState = [
         difficulty : ["Hard"],
         thoughts : ["Most important of all, keep yourself educated on what is going on around you, and how the things you are doing has an impact on the world. There is so much information and misinformation out there, it can be really hard. The best you can do is to seek it out, practice asking questions yourself and thinking about it. This includes engaging in discussion with others, and listening with an open mind, regardless of their opinion.\n\nSome pieces that I have really appreciated recently and worth seeking out are David Attenborough's 'A life On Our Planet' (on netflix), and Charles Massy's book 'Call Of The Reed Warbler'. Seaspiracy is pretty depressing but also a good one."]
     }
-
-];
-
-
-
-export const sustainabilityReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case types.LOAD_SUSTAINABILITY:
-            return [...action.sustainability];
-        default:
-            return state;
-    }
-}
+]

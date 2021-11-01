@@ -1,9 +1,13 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CopyWebPackPlugin = require("copy-webpack-plugin");
 var path = require('path');
 
 module.exports = {
     entry: './src/index.tsx',
     devtool: 'inline-source-map',
+    devServer: {
+      historyApiFallback: true
+    },
     resolve: {
       extensions: ['.ts', '.tsx','json', '.js']
     },
@@ -79,7 +83,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
-      favicon: './src/public/favicon.ico'
+      favicon: './src/constants/Static/favicon.ico'
     }),
+    new CopyWebPackPlugin({
+      patterns: [
+        { from: "./src/constants/Static"}
+      ]
+    })
   ]
 };

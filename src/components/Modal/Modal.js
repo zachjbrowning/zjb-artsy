@@ -14,31 +14,17 @@ export default function Modal() {
     const dispatch = useDispatch();
     const active = useSelector(state => state.active);
     
-    var list = [];
-
-    if (active.role === "projects") list = useSelector(state => state.projects);
-    else if (active.role === "sustainability") list = useSelector(state => state.sustainability);
-    else list = useSelector(state => state.recipes);
-    
-    var chosen = false;
-    if (list) {
-        for (var item of list) {
-            if (item.title === active.name) {
-                chosen = item;
-                break;
-            }
-        }
-    }
-
     var html = document.getElementById("html");
     var top = html.scrollTop;
-    
+    let chosen = active.tile;    
     if (chosen) {
         html.style.top = `-${top}px`
         html.style.position = "fixed";
         if (active.role === "projects") chosen = <Project item={chosen} />;
         else if (active.role === "sustainability") chosen = <Sustain item={chosen} />;
         else if (active.role === "recipes") chosen = <Recipe item={chosen} />; 
+    } else {
+        return <></>
     }
     
 

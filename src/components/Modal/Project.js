@@ -4,7 +4,7 @@ import styles from './Modal.module.scss';
 import parse from '../../../lib/utils/parser';
 
 export default function Project(props) {
-
+    console.log("We got:",  props);
     return <div className={styles.content}>
         <h2 className={styles.header}>{props.item?.title}.</h2>
         <p>{props.item?.date}</p>
