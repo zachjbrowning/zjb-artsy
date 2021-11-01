@@ -1,10 +1,10 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: "Infrastructure for ausgreener webapp"
+Description: "Infrastructure for zachjbrowning.com"
 Parameters:
 
     DomainName: 
       Type: String
-      Default: australiangreener.org
+      Default: zachjbrowning.com
 
     PipelineScheduleRoleArn:
       Type: String
