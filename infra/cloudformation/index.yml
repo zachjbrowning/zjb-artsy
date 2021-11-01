@@ -22,4 +22,12 @@ Resources:
                 PipelineScheduleRoleArn: arn:aws:iam::671319357614:role/pipeline-schedule-invoker
             TemplateURL: !Sub "${TemplateBaseUrl}/infrastructure.yml"
 
+    Networking:
+        Type: AWS::CloudFormation::Stack
+        DeletionPolicy: Retain
+        Properties:
+            Parameters:
+                DomainName: !Ref DomainName
+            TemplateURL: !Sub "${TemplateBaseUrl}/networking.yml"
+
 

@@ -14,10 +14,12 @@ def get_user_params(job_data):
 
 
 def job_failure(job, message):
-    codepipeline.put_job_failure_result(jobId=job, failureDetails={'message': message, 'type': 'JobFailed'})
+    if job != 'test':
+        codepipeline.put_job_failure_result(jobId=job, failureDetails={'message': message, 'type': 'JobFailed'})
     
 def job_success(job, message):
-    codepipeline.put_job_success_result(jobId=job)
+    if job != 'test':
+        codepipeline.put_job_success_result(jobId=job)
     
     
 def lambda_handler(event, context): 
