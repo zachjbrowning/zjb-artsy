@@ -146,7 +146,7 @@ Resources:
         Properties: 
             Name: Pipeline-deploy-schedule
             Description: Ensure pipeline is run more frequently than file deletion
-            ScheduleExpression: cron(0 0 1 * *)
+            ScheduleExpression: cron(0 0 1 * ? *)
             State: ENABLED
             Targets:
                 - Arn: !Sub arn:aws:codepipeline:${AWS::Region}:${AWS::AccountId}:${CodePipeline}
