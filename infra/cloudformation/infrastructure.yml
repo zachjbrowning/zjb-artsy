@@ -21,8 +21,8 @@ Resources:
                 ErrorDocument: "index.html"
             LifecycleConfiguration:
               Rules:
-                - ExpirationInDays: 30
-                  Id: Expire objects in 30 days
+                - ExpirationInDays: 32
+                  Id: Expire objects in 32 days
                   Status: Enabled
 
     WwwSiteS3:
@@ -146,7 +146,7 @@ Resources:
         Properties: 
             Name: Pipeline-deploy-schedule
             Description: Ensure pipeline is run more frequently than file deletion
-            ScheduleExpression: rate(29 days)
+            ScheduleExpression: cron(0 0 1 * *)
             State: ENABLED
             Targets:
                 - Arn: !Sub arn:aws:codepipeline:${AWS::Region}:${AWS::AccountId}:${CodePipeline}
