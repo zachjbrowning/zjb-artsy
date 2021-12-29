@@ -13,11 +13,17 @@ import Tile from './Tile';
 
 export default function Recipes() {
 
-    return <Grid>
-       {
-           recipes.map((v, i) => <Tile key={i} tile={v} role={'recipes'} />)
-       } 
-    </Grid>
+    return <>
+        <div style={{width: '100%', textAlign: 'center', marginBottom: '1rem', padding: '0.5rem'}}>
+            <h3>I've neglected this page a bit as of late... I've got been cooking whole bunch of new stuff though so stay tuned!</h3>
+        </div>
+        <Grid>
+        {
+            recipes.map((v, i) => <Tile key={i} tile={v} role={'recipes'} />)
+        } 
+        </Grid>
+    </> 
+    
 }
 
 

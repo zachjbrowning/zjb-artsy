@@ -5,6 +5,7 @@ import investbot from "../../constants/Projects/investbot.svg"
 import openbook from "../../constants/Projects/openbook.svg"
 import reaction from "../../constants/Projects/reaction.svg"
 import zest from "../../constants/Projects/zest.svg"
+import ausg from "../../constants/Projects/ausgreener.svg"
 import Grid from './Grid';
 import Tile from './Tile';
 
@@ -19,6 +20,20 @@ export default function Recipes() {
 
 
 const recipes = [
+    {
+        title: "Australian Greener",
+        svg: ausg,
+        colour: '#8abc94',
+        date: "August 2021",
+        summary: ["I co-founded a not-for-profit startup with a friend. The aim is to help small businesses on their sustainability journey. This has been by far my largest techinical project yet. I do all of the design, developing and product management. The tech stack is a React/Typescript frontend hosted on S3, with a .NET Core bff and DynamoDB database."],
+        learning: [
+            ["For the first time having a project that is a bit more serious, I've had to take on more of a product management role to decide what I need to prioritise and roadmaps to use my time most effectively."],
+            ["This project is my first one with a full CI/CD pipeline, that tests, builds and deploys my code to the necessary environments."],
+            ["Building a website that looks good as well as functional is always a challenge. This site has developed my SVG skills a lot - all the icons throughout the site were drawn by me!"],
+            ["With a larger project like this, it is easy for things to get out of hand quickly. As I've grown as an engineer I am continuing to try and include better and better ways of working - TDD, proper staging environments, structured and maintained component libraries..."]
+        ],
+        notes: [["I have so many ideas that I want to bring to this project so my hope is that it continues to grow!"]]
+    },
     {
         "title" : "this website",
         "svg" : artbro,
