@@ -19,11 +19,6 @@ Resources:
             WebsiteConfiguration:
                 IndexDocument: "index.html"
                 ErrorDocument: "index.html"
-            LifecycleConfiguration:
-              Rules:
-                - ExpirationInDays: 32
-                  Id: Expire objects in 32 days
-                  Status: Enabled
 
     WwwSiteS3:
         Type: "AWS::S3::Bucket"
@@ -140,18 +135,6 @@ Resources:
                         UserParameters: "zachjbrowning.com"
                     RunOrder: 1
 
-
-    PipelineSchedule:
-        Type: AWS::Events::Rule
-        Properties: 
-            Name: Pipeline-deploy-schedule
-            Description: Ensure pipeline is run more frequently than file deletion
-            ScheduleExpression: cron(0 0 1 * ? *)
-            State: ENABLED
-            Targets:
-                - Arn: !Sub arn:aws:codepipeline:${AWS::Region}:${AWS::AccountId}:${CodePipeline}
-                  Id: !Sub "${CodePipeline}-Schedule"
-                  RoleArn: !Ref PipelineScheduleRoleArn
 
     CodeBuildProject:
         Type: "AWS::CodeBuild::Project"
