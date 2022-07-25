@@ -1,0 +1,58 @@
+.expsection {
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    .side {
+        width:30%;
+        min-height: 8rem;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        .separator {
+            height: 100%;
+            border: 1px solid gray;
+            &.hide {
+                border: none;
+            }
+        }
+        svg {
+            position: absolute;
+            top: calc(50% - 0.5rem);
+            left: calc(50% - 0.5rem);
+            height: 1rem;
+        }
+    }
+    .item {
+        width:100%;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        h3 {
+            font-weight: 700;
+            font-size:1.1rem;
+            color:#568A68;
+        }
+        p {
+            font-size:1rem;
+            color: gray;
+
+        }
+        ul {
+            list-style-type: disc;
+            list-style-position: inside;
+        }
+        li {
+            font-size:0.95rem;
+            margin-left: 5px;
+        }
+    }
+    .coicle {
+        fill: #568A68;
+    }
+}

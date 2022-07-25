@@ -19,8 +19,8 @@ export default function Nav() {
         case '/recipes':
             word = 'recipes';
             break;
-        case '/contact':
-            word = 'contact';
+        case '/experience':
+            word = 'experience';
             break;
         case '/sustainability':
             word = 'sustainability';
@@ -40,7 +40,7 @@ export default function Nav() {
             case '/recipes':
                 document.getElementById("nav-recipes").classList.remove(styles.active);
                 break;
-            case '/contact':
+            case '/experience':
                 document.getElementById("nav-contact").classList.remove(styles.active);
                 break;
             case '/sustainability':
@@ -61,15 +61,15 @@ export default function Nav() {
             <Link id="nav-projects" onClick={setActive} to={"/projects"} className={`${styles.navItem} ${history.location.pathname === '/projects' ? styles.active : ""}`}>
                 projects
             </Link>
+            <Link id="nav-contact" onClick={setActive} to={"/experience"} className={`${styles.navItem} ${history.location.pathname === '/experience' ? styles.active : ""}`}>
+                experience
+            </Link>
             <Link id="nav-recipes" onClick={setActive} to={"/recipes"} className={`${styles.navItem} ${history.location.pathname === '/recipes' ? styles.active : ""}`}>
                 recipes
             </Link>
             <Link id="nav-sustainability" onClick={setActive} to={"/sustainability"} className={`${styles.navItem} ${history.location.pathname === '/sustainability' ? styles.active : ""}`}>
                 sustainability
             </Link>            
-            <Link id="nav-contact" onClick={setActive} to={"/contact"} className={`${styles.navItem} ${history.location.pathname === '/contact' ? styles.active : ""}`}>
-                contact
-            </Link>
         </div>
         
         <div className={styles.mini}>

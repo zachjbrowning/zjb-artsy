@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Experience } from '../Experience/Experience';
 const Landing = lazy(() => import('../Landing/Landing'));
 const Nav = lazy(() => import('../Nav/Nav'));
 const Contact = lazy(() => import('../Grid/Contact'));
@@ -24,7 +25,7 @@ const RouteSwitch = () => <Suspense fallback={<LoadingDots />}>
         <Route exact path="/"><Home /></Route>
         <Route exact path="/projects"><Projects /></Route>
         <Route exact path="/recipes"><Recipes /></Route>
-        <Route exact path="/contact"><Contact /></Route>
+        <Route exact path="/experience"><Experience /></Route>
         <Route exact path="/sustainability"><SustainExplain /> <Sustainabality /></Route>
     </Switch>
     <Modal />
